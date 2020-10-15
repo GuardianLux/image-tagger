@@ -1,10 +1,11 @@
 
 from imageai.Detection import ObjectDetection
-import os, argparse
+import os, argparse, json
 from exif import Image
 
 input_file = ""
 path = os.getcwd()
+tags = []
 
 # argparse setup
 parser = argparse.ArgumentParser()
@@ -21,10 +22,20 @@ detector.loadModel()
 # Get detections
 detections = detector.detectObjectsFromImage(input_image=input_file, output_image_path=os.path.join(path , "imagenew.jpg"))
 for eachObject in detections:
-    print(eachObject["name"] , " : " , eachObject["percentage_probability"])
+    tags.append(eachObject['name'])
 
 # Get exif data
 with open(input_file, 'rb') as image_file:
     image = Image(image_file)
 
-print(dir(image))
+image_data = {
+    'name' : input_file,
+    'tags' : tags,
+    'camera make' : image.make,
+    'camera model' : image.model,
+    'aperture' : image.aperture_value,
+    'exposure_time' : image.exposure_time,
+    'focal_length' : image.focal_length    
+}
+
+print(json.dumps(image_data))
