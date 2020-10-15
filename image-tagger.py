@@ -33,13 +33,16 @@ image_data = {
     'tags' : tags,
     'camera make' : image.make,
     'camera model' : image.model,
+    'datetime' : image.datetime,
     'aperture' : image.aperture_value,
     'exposure_time' : image.exposure_time,
     'focal_length' : image.focal_length,
     'focal_length_in_35mm' : image.focal_length_in_35mm_film,
+    'f_number' : image.f_number,
     'shutter_speed' : image.shutter_speed_value,
     'metering_mode' : image.metering_mode,
-    'white_balance' : image.white_balance
+    'white_balance' : image.white_balance,
+    'ISO' : image.photographic_sensitivity
 }
 
 print(json.dumps(image_data))
