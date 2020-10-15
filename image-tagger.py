@@ -35,7 +35,13 @@ image_data = {
     'camera model' : image.model,
     'aperture' : image.aperture_value,
     'exposure_time' : image.exposure_time,
-    'focal_length' : image.focal_length    
+    'focal_length' : image.focal_length,
+    'focal_length_in_35mm' : image.focal_length_in_35mm_film,
+    'shutter_speed' : image.shutter_speed_value,
+    'lens_make' : image.lens_make,
+    'lens_model' : image.lens_model,
+    'metering_mode' : image.metering_mode,
+    'white_balance' : image.white_balance
 }
 
 print(json.dumps(image_data))
